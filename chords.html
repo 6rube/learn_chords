@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Learn Chords</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <div class="back_button floating_button">
+        <a href="index.html"><img src ="/icons/back.svg" width="30px" height="30px" alt="back_button"/></a>
+    </div>
+    <div class="floating_button help_button">
+        <a id="help_button"><img src ="/icons/help.svg" width="30px" height="30px" alt="back_button"/></a>
+    </div>
+
+    <dialog id="help_dialog">
+        <button id="help_menu_close">Close</button>
+        <p>
+            Play the Chord that is displayed at "Play This:".<br>
+            You can see the keys pressed at "Notes Played:".<br>
+            You can see what chord you played at "Chord Played:".
+        </p>
+    </dialog>
+
+    <div class="menu">
+
+        <div class="chords_display">
+            <div class="row">
+                <div class="column">Play This:</div>
+                <div class="column"><div id="display"></div></div>
+            </div>
+            <div class="row">
+                <div class="column">Notes Played:</div>
+                <div class="column"><div id="notes"></div></div>
+            </div>
+            <div class="row">
+                <div class="column">Chord Played:</div>
+                <div class="column"><div id="display_played"></div></div>
+            </div>
+        </div>
+
+    </div>
+    <script src="chords.js"></script>
+
+</body>
+
+</html>

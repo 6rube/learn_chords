@@ -137,7 +137,7 @@ var octaves = [
 
 var chords = [
     ["C","E","G", "CMaj"],
-    ["C","E#","G", "CMin"],
+    ["C","D#","G", "CMin"],
     ["C#","F","G#", "C#Maj"],
     ["C#","E","G#", "C#Min"],
     ["D","F#","A", "DMaj"],
@@ -147,11 +147,11 @@ var chords = [
     ["E","G#","B", "EMaj"],
     ["E","G","B", "EMin"],
     ["F","A","C", "FMaj"],
-    ["F","A#","C", "FMin"],
+    ["F","G#","C", "FMin"],
     ["F#","A#","C#", "F#Maj"],
     ["F#","A","C#", "F#Min"],
     ["G","B","D", "GMaj"],
-    ["G","B#","D", "GMin"],
+    ["G","A#","D", "GMin"],
     ["G#","C","D#", "G#Maj"],
     ["G#","B","D#", "G#Min"],
     ["A","C#","E", "AMaj"],
@@ -165,9 +165,18 @@ var chords = [
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+    return Math.floor(Math.random() * (max - min) + min);
   }
 
+document.getElementById("help_button").onclick = function() {
+    document.getElementById("help_dialog").show();
+}
+
+document.getElementById("help_menu_close").onclick = function() {
+    document.getElementById("help_dialog").close();
+}
+
+  
 display.innerHTML = chords[getRandomInt(0,chords.length)][3]
 
 navigator.requestMIDIAccess().then(onMIDISuccess, onMIDIFailure);
@@ -187,7 +196,6 @@ function onMIDIFailure() {
 function getMIDIMessage(midiMessage) {
     var command = midiMessage.data[0];
     var note = midiMessage.data[1];
-    var velocity = (midiMessage.data.length > 2) ? midiMessage.data[2] : 0;
     if(midiMessage.data[0] != 248)console.log(midiMessage)
 
     if(midiMessage.data[2] == 0){
@@ -214,7 +222,4 @@ function getMIDIMessage(midiMessage) {
             }
         }
     }
-
-
-    
 }
